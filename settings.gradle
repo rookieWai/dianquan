@@ -1,0 +1,9 @@
+rootProject.name = "dianquan"
+include ':app'
+include ':home'
+include ':store'
+include ':survey'
+include ':deal'
+include ':mine'
+include ':common'
+include ':service'

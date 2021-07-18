@@ -1,0 +1,55 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'koin'
+//应用路由插件
+apply plugin: 'com.alibaba.arouter'
+apply plugin: 'com.didi.dokit'
+
+buildscript {
+    ext {
+        kotlin_version = "1.5.10"
+        compile_sdk_version = 30
+        build_tools_version = '29.0.3'
+        min_sdk_verion = 21
+        target_sdk_version = 30
+
+        lib_version_code = 1
+        lib_version_name = "1.0.0"
+
+        navigation_version = "2.3.0"//navigation 版本号，需要在dependencies和classpath保持一致
+        koin_version = '2.2.0-rc-3'//依赖注入框架
+    }
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
+        classpath "org.koin:koin-gradle-plugin:$koin_version"
+
+        //阿里 Arouter 用于观察路由表创建
+        classpath "com.alibaba:arouter-register:1.0.2"
+
+        //doraemonKit 调试辅助工具
+        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.2.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

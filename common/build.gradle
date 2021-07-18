@@ -1,0 +1,54 @@
+//根据是否独立运行，将模块作为apk还是module
+if(singleModule.toBoolean()){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin:  'com.android.library'
+}
+
+
+apply from: '../dependencies.gradle'
+
+android {
+    //from dependencies.gradle
+    defaultConfig{
+        //只有独立运行时才需要applicationId
+        if(singleModule.toBoolean()){
+            applicationId "com.wei.dianquan.common"
+        }
+    }
+}
+
+dependencies {
+
+    //from dependencies.gradle
+
+    //jetpack最新的startUp组件
+    api 'androidx.startup:startup-runtime:1.0.0-alpha03'
+
+
+    // okHttp
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+
+    // retrofit
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // gson
+    api 'com.google.code.gson:gson:2.8.7'
+
+    //glide
+    api 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    //coil
+    implementation('io.coil-kt:coil:1.2.2')
+    //utils
+    api 'com.blankj:utilcodex:1.29.0'
+
+    //腾讯的key-value
+    implementation('com.tencent:mmkv-static:1.2.9')
+
+
+    //网页加载 webView
+    implementation 'com.just.agentweb:agentweb-androidx:4.1.4'
+}
