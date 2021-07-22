@@ -1,4 +1,4 @@
-package com.wei.common
+package com.wei.common.network.config
 
 import okhttp3.*
 
