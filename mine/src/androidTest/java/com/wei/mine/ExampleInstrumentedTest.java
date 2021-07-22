@@ -1,4 +1,4 @@
-package com.wei.mylibrary;
+package com.wei.mine;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.wei.mylibrary.test", appContext.getPackageName());
+        assertEquals("com.wei.mine.test", appContext.getPackageName());
     }
 }

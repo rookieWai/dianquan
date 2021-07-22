@@ -1,4 +1,4 @@
-package com.wei.mylibrary;
+package com.wei.mine;
 
 import org.junit.Test;
 
