@@ -1,28 +1,25 @@
-package com.wei.deal
+package com.wei.store
 
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import com.wei.common.base.BaseFragment
-import com.wei.deal.databinding.FragmentDealBinding
-
+import com.wei.store.databinding.FragmentStoreBinding
 
 /**
- * @ClassName DealFragment
+ * @ClassName FragmentStore
  * @Author Rookie Wai
- * @Date 2021/7/22 16:40
+ * @Date 2021/7/23 17:06
  *
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
+class StoreFragment : BaseFragment() {
 
-class DealFragment :BaseFragment() {
-
-    override fun getLayoutRes()=R.layout.fragment_deal
+    override fun getLayoutRes()=R.layout.fragment_store
 
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
-        return FragmentDealBinding.bind(view)
+        return FragmentStoreBinding.bind(view)
     }
-
 
 }

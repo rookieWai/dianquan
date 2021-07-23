@@ -1,28 +1,24 @@
-package com.wei.deal
+package com.wei.survey
 
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import com.wei.common.base.BaseFragment
-import com.wei.deal.databinding.FragmentDealBinding
-
+import com.wei.survey.databinding.FragmentSurveyBinding
 
 /**
- * @ClassName DealFragment
+ * @ClassName FragmentSurvey
  * @Author Rookie Wai
- * @Date 2021/7/22 16:40
+ * @Date 2021/7/23 17:08
  *
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
+class SurveyFragment : BaseFragment() {
 
-class DealFragment :BaseFragment() {
-
-    override fun getLayoutRes()=R.layout.fragment_deal
+    override fun getLayoutRes()=R.layout.fragment_survey
 
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
-        return FragmentDealBinding.bind(view)
+        return FragmentSurveyBinding.bind(view)
     }
-
-
 }

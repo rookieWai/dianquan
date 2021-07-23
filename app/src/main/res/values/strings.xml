@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">dianquan</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">我的</string>
+    <string name="title_store">商店</string>
+    <string name="title_survey">测评</string>
+    <string name="title_deal">交易</string>
+    <string name="title_mine">我的</string>
 </resources>
