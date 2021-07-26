@@ -20,6 +20,7 @@ class HomeFragment : BaseFragment() {
 
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
         return FragmentHomeBinding.bind(view)
+
     }
 
 }

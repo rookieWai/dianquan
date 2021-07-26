@@ -7,7 +7,7 @@ apply from: '../dependencies.gradle'
 android {
 
     defaultConfig {
-        applicationId "com.wei.cainiaoone"
+        applicationId "com.wei.dianquan"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

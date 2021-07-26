@@ -1,4 +1,4 @@
-package com.wei.dianquan.ui
+package com.wei.dianquan
 
 
 import android.os.Bundle
@@ -24,10 +24,12 @@ class MainActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         val mBinding =
             DataBindingUtil.setContentView<ActivityMainBinding> (this,
                 R.layout.activity_main)
 
+        mBinding.test="abc"
 
         val navController=findNavController(R.id.nav_host_fragment_activity_main)
         mBinding.navView.setupWithNavController(navController)

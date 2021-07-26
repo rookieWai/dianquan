@@ -13,7 +13,7 @@ android {
     defaultConfig{
         //只有独立运行时才需要applicationId
         if(singleModule.toBoolean()){
-            applicationId "com.cainiaoone.app.home"
+            applicationId "com.wei.dianquan.home"
         }
     }
 }
