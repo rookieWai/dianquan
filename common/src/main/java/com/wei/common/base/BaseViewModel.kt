@@ -15,11 +15,12 @@ import kotlinx.coroutines.launch
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
-class BaseViewModel : ViewModel() {
+
+open class BaseViewModel : ViewModel() {
 
     //jobs列表 job异步任务
     private val jobs= mutableListOf<Job>()
-    val isLoading=MutableLiveData<Boolean>()  //表示网络请求的状态
+    private val isLoading=MutableLiveData<Boolean>()  //表示网络请求的状态
 
     /**
      * 使用协程进行网络请求

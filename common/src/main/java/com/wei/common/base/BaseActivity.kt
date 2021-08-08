@@ -58,14 +58,17 @@ abstract class BaseActivity<ActBinding:ViewDataBinding> :AppCompatActivity{
         if(this::mBinding.isInitialized){
             mBinding.unbind()
         }
+
     }
 
     //扩展LiveData的observer函数
-    protected fun <T:Any> LiveData<T?>.observerKt(blokc:(T?)->Unit){
+    protected fun <T:Any> LiveData<T?>.observerKt(block:(T?)->Unit){
         this.observe(viewLifeCycleOwner, Observer {
-            blokc.invoke(it)
+            block.invoke(it)
         })
     }
+
+
 
 
 }

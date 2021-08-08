@@ -108,7 +108,7 @@ class OkHttpApi: IHttp {
     override fun post(body: Any, path: String, callback: IHttpCallback) {
         val request = Request.Builder()
             .post(Gson().toJson(body).toRequestBody())
-            .url("http://39.105.140.1:8085/sso/login?password=123456&username=test")
+            .url(baseUrl)
             .tag(body)
             .build()
 

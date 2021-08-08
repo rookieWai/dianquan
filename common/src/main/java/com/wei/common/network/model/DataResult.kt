@@ -26,6 +26,7 @@ sealed class DataResult<out R> {
             is Success<*>->"Success[data=$data]"
             is Error->"Error[exception=$exception]"
             Loading->"Loading"
+            else -> ""
         }
     }
 }

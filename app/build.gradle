@@ -28,6 +28,7 @@ dependencies {
     }
 
     implementation project('::service')
+    implementation project('::login')
 
     //今日头条的适配方案  屏幕自适配
     implementation 'me.jessyan:autosize:1.2.1'
