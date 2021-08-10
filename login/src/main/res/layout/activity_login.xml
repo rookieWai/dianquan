@@ -126,7 +126,7 @@
             android:layout_marginHorizontal="30dp"
             android:text="登录"
             android:onClick="@{()->vm.goLogin()}"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp"
             app:cornerRadius="20dp"
             />
