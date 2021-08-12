@@ -1,6 +1,7 @@
 package com.wei.common.network.config
 
 import com.blankj.utilcode.util.EncryptUtils
+import com.google.gson.reflect.TypeToken
 import com.wei.common.network.utils.MySpUtils
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -22,12 +23,9 @@ class HeaderInterceptor :Interceptor{
         val newRequest=originRequest.newBuilder()
             .cacheControl(CacheControl.FORCE_NETWORK)
 
-        //如果有token加入请求参数中
-        val localToken =
-            MySpUtils.getString(SP_KEY_USER_TOKEN, originRequest.header("token")) ?: ""
-        if (localToken.isNotEmpty()) {
-            newRequest.header("Authorization",localToken)
-        }
+
+        gToken.value?.let { newRequest.header("Authorization", it) }
+
 
         return chain.proceed(newRequest.build())
 

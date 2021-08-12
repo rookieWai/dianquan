@@ -32,6 +32,8 @@ class LoginActivityViewModel(private val repo:LoginRepo) :BaseViewModel(){
         }
     }
 
+
+
     fun goLogin(){
         repoLogin()
     }
@@ -52,6 +54,7 @@ class LoginActivityViewModel(private val repo:LoginRepo) :BaseViewModel(){
     fun phoneLogin(view: View){
         ToastUtils.showShort("未实现")
     }
+
 
 
     //endregion

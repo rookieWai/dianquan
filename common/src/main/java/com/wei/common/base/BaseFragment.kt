@@ -41,7 +41,7 @@ abstract class BaseFragment : Fragment{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mBinding=bindView(view,savedInstanceState)
-
+        mBinding?.lifecycleOwner=viewLifecycleOwner
         initConfig()
         initData()
     }
@@ -58,6 +58,11 @@ abstract class BaseFragment : Fragment{
 
     //处理数据的方法
     open fun initData(){}
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding?.unbind()
+    }
 
     //LiveData的observe扩展函数
     fun <T:Any> LiveData<T>.observerKt(block:(T?)->Unit){

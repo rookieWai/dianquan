@@ -1,6 +1,7 @@
 package com.wei.common.network
 
 import com.wei.common.network.config.BASE_URL
+import com.wei.common.network.config.HeaderInterceptor
 import com.wei.common.network.config.LocalCookieJar
 import com.wei.common.network.config.RetryInterceptor
 import com.wei.common.network.support.LiveDataCallAdapterFactory
@@ -36,6 +37,7 @@ object RetrofitApi {
         .cache(Cache(File("data/user/0/com.wei.dianquan/cache","okhttp"),1024)) //指定缓存数据放入的文件
         .cookieJar(LocalCookieJar())
         .addNetworkInterceptor(RetryInterceptor(maxRetry)) //添加重试网络拦截器，当前重试次数为1
+        .addNetworkInterceptor(HeaderInterceptor())
         .build()
 
     //构建retrofitBuilder

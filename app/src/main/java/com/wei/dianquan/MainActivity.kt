@@ -1,22 +1,18 @@
 package com.wei.dianquan
 
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.navigation.ui.setupWithNavController
-import androidx.navigation.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.wei.common.base.BaseActivity
+import com.wei.common.network.config.gToken
+import com.wei.common.network.utils.MySpUtils
 import com.wei.common.widget.BnvVp2Meditor
 import com.wei.deal.DealFragment
 
-import com.wei.dianquan.R
 import com.wei.dianquan.databinding.ActivityMainBinding
 import com.wei.home.HomeFragment
-import com.wei.mine.MineFragment
+import com.wei.mine.MineHostFragment
 import com.wei.store.StoreFragment
 import com.wei.survey.SurveyFragment
 import java.lang.IndexOutOfBoundsException
@@ -40,13 +36,13 @@ class MainActivity :BaseActivity<ActivityMainBinding>(){
         INDEX_STORE to { StoreFragment()},
         INDEX_SURVEY to { SurveyFragment() },
         INDEX_DEAL to { DealFragment() },
-        INDEX_MINE to { MineFragment() }
+        INDEX_MINE to { MineHostFragment() }
     )
 
     //业务相关
     override fun initConfig() {
         super.initConfig()
-
+        gToken.value=MySpUtils.getString("token"," ")
     }
 
     //视图相关

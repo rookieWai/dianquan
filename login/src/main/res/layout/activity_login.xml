@@ -7,47 +7,41 @@
             type="com.wei.login.LoginActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:padding="15dp">
+            app:navigationIcon="@drawable/ic_back">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="登录"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="26dp" />
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_back"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_margin="15dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:background="@drawable/back"
-                />
+        </com.google.android.material.appbar.MaterialToolbar>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_register"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/register"
-                android:textSize="15sp"
-                android:background="@drawable/setbar_bg"
-                app:cornerRadius="20dp"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/login_image_view"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tool_bar"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@mipmap/ic_launcher_round"
             />

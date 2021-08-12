@@ -6,4 +6,7 @@
     <string name="wait_send">待发货</string>
     <string name="wait_receive">待收货</string>
     <string name="sales_return">退货</string>
+    <string name="str_login_or_register">登录/注册</string>
+
+
 </resources>
