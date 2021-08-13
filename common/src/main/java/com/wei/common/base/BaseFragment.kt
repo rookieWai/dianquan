@@ -70,4 +70,6 @@ abstract class BaseFragment : Fragment{
             block.invoke(it)
         })
     }
+
+
 }

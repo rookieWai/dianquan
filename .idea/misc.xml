@@ -5,14 +5,19 @@
       <map>
         <entry key="..\:/androidproj/dianquan/app/src/main/res/layout/activity_main.xml" value="0.12892603850050657" />
         <entry key="..\:/androidproj/dianquan/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17685185185185184" />
-        <entry key="..\:/androidproj/dianquan/login/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/androidproj/dianquan/home/src/main/res/layout/fragment_home.xml" value="0.12892603850050657" />
+        <entry key="..\:/androidproj/dianquan/login/src/main/res/layout/activity_login.xml" value="0.19" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_host_mine.xml" value="0.2" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_menu.xml" value="0.12892603850050657" />
-        <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_mine.xml" value="0.22" />
+        <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_mine.xml" value="0.25" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_order.xml" value="0.26510416666666664" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/fragment_user_info.xml" value="0.26510416666666664" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/menu.xml" value="0.26510416666666664" />
         <entry key="..\:/androidproj/dianquan/service/src/main/res/drawable/ic_back.xml" value="0.22037037037037038" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.22784810126582278" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable/ic_accelerator_24px.xml" value="0.39375" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/fragment_store.xml" value="0.2" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_menu.xml" value="0.21752136752136753" />
       </map>
     </option>
   </component>

@@ -8,6 +8,7 @@ import com.wei.service.network.moduleService
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import com.wei.common.ktx.application
+import com.wei.store.moduleStore
 
 /**
  * @ClassName DQApplication
@@ -20,7 +21,7 @@ import com.wei.common.ktx.application
 class DQApplication : BaseApplication(){
 
     private val modules= arrayListOf<Module>(
-        moduleService,moduleLogin, moduleMine
+        moduleService,moduleLogin, moduleMine, moduleStore
     )
 
 
