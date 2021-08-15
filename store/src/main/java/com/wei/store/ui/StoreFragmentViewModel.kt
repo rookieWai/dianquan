@@ -1,7 +1,10 @@
 package com.wei.store.ui
 
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.wei.common.base.BaseViewModel
 import com.wei.store.repo.StoreRepo
+import com.wei.store.ui.adapter.StoreProductListAdapter
 
 /**
  * @ClassName StoreFragmentViewModel
@@ -15,10 +18,19 @@ class StoreFragmentViewModel(val repo: StoreRepo) : BaseViewModel() {
 
     val liveStoreTabRsp=repo.storeTabRsp
 
+    val liveStoreProductRsp=repo.storeProductRsp
+
+    val adapter=StoreProductListAdapter
+
+    //获取商品分类
     fun getTab(){
         serverAwait {
             repo.getStoreTabRsp()
         }
     }
+
+    //根据类别id，获取商品列表
+    suspend fun getProductListById(id: Int? =null)
+    =repo.getStoreProduct(id).cachedIn(viewModelScope)
 
 }

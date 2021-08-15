@@ -137,4 +137,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //endregion
 
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
 }

@@ -16,8 +16,10 @@
         <entry key="..\:/androidproj/dianquan/service/src/main/res/drawable/ic_back.xml" value="0.22037037037037038" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.22784810126582278" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable/ic_accelerator_24px.xml" value="0.39375" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/fragment_product_deatil.xml" value="0.30982905982905984" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/fragment_store.xml" value="0.2" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_menu.xml" value="0.21752136752136753" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_store_product.xml" value="0.25" />
       </map>
     </option>
   </component>

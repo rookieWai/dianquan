@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="info"
+            type="com.wei.store.net.StoreProductRsp.Data"
+            />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0.5dp"
+        app:contentPadding="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_weight="7"
+                android:layout_height="0dp"
+                app:srcCompat="@{info.pic}"
+                tools:srcCompat="@drawable/xiaomi"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                />
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_margin="5dp"
+                android:textSize="14sp"
+                android:text="@{info.name}"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待"
+
+                />
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@{`￥`+info.price}"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="5dp"
+                android:textSize="16sp"
+                tools:text="￥180"/>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
