@@ -45,6 +45,7 @@ class StoreFragment : BaseFragment() {
         startActivity(intent)
     }
 
+
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
         return FragmentStoreBinding.bind(view).apply {
 
