@@ -5,6 +5,7 @@ import com.wei.common.network.config.BASE_URL
 import com.wei.store.net.StoreService
 import com.wei.store.repo.StoreRepo
 import com.wei.store.repo.StoreRepoImpl
+import com.wei.store.ui.ProductDetailViewModel
 import com.wei.store.ui.StoreFragmentViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -30,4 +31,6 @@ val moduleStore: Module= module {
     single { StoreRepoImpl(get()) } bind StoreRepo::class
 
     viewModel { StoreFragmentViewModel(get()) }
+
+    viewModel { ProductDetailViewModel(get()) }
 }

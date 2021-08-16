@@ -1,12 +1,10 @@
 package com.wei.mine.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.findNavController
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseFragment
 import com.wei.common.network.config.gToken
 import com.wei.common.network.utils.MySpUtils
@@ -47,6 +45,7 @@ class MineFragment : BaseFragment(){
                     val action =
                         MineFragmentDirections.actionMineFragmentToUserInfoFragment()
                     findNavController().navigate(action)
+
                 }
             }
 

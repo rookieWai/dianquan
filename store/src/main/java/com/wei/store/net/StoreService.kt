@@ -3,6 +3,7 @@ package com.wei.store.net
 import com.wei.service.network.BaseDQRsp
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -28,5 +29,8 @@ interface StoreService {
     ) : Call<BaseDQRsp>
 
 
+    //根据商品id获取商品详情
+    @GET("product/detail/{id}")
+    fun getProductDetailById(@Path("id") id:Int):Call<BaseDQRsp>
 }
 

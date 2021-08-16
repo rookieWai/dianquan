@@ -138,5 +138,6 @@ dependencies {
     //endregion
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.youth.banner:banner:2.1.0'
 
 }

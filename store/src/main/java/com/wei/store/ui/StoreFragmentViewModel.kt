@@ -16,9 +16,9 @@ import com.wei.store.ui.adapter.StoreProductListAdapter
  */
 class StoreFragmentViewModel(val repo: StoreRepo) : BaseViewModel() {
 
-    val liveStoreTabRsp=repo.storeTabRsp
+    val liveStoreTabRsp=repo.liveStoreTab
 
-    val liveStoreProductRsp=repo.storeProductRsp
+    val liveStoreProductRsp=repo.liveStoreProduct
 
     val adapter=StoreProductListAdapter
 

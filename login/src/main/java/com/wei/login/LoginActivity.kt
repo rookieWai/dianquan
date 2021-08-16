@@ -47,6 +47,7 @@ class LoginActivity :BaseActivity<ActivityLoginBinding>(){
                 finish()
             }
         }
+
     }
 
 }

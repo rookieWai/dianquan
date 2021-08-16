@@ -2,6 +2,7 @@ package com.wei.store.ui
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -38,7 +39,10 @@ class StoreFragment : BaseFragment() {
 
     private val storeProductListAdapter = StoreProductListAdapter {
         //处理点击商品item的响应逻辑
-        ToastUtils.showShort(it.id)
+        val intent=Intent(context,ProductDetailActivity::class.java)
+        //传递点击商品id
+        intent.putExtra("id",it.id)
+        startActivity(intent)
     }
 
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
