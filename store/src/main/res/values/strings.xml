@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="product_name">商品名称</string>
+    <string name="product_title">商品详情</string>
+    <string name="product_price">¥0</string>
+</resources>

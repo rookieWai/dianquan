@@ -31,6 +31,8 @@
 
         <activity android:name="com.wei.store.ui.ProductDetailActivity"/>
 
+        <activity android:name="com.wei.store.ui.StoreCarActivity"/>
+
     </application>
 
 </manifest>

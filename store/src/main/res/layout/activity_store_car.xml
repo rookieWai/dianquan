@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:layout_collapseMode="pin"
+            android:elevation="0dp"
+            app:navigationIcon="@drawable/back"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="购物篮"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_car"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_car">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/select_all"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="全选"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                app:layout_constraintRight_toLeftOf="@id/tv_total"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="合计："
+                android:gravity="center|right"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintRight_toLeftOf="@id/tv_total_price"
+                app:layout_constraintLeft_toRightOf="@id/select_all"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total_price"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="¥ 0"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center|left"
+                app:layout_constraintLeft_toRightOf="@id/tv_total"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_cart_pay"
+                tools:text="¥ 500"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tv_cart_pay"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="结算"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                app:cornerRadius="20dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_total_price"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/bt_cart_delete"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_cart_delete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="删除"
+                android:gravity="center"
+                app:cornerRadius="20dp"
+                android:layout_marginEnd="5dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintLeft_toRightOf="@id/tv_cart_pay"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

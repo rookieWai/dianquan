@@ -1,9 +1,11 @@
-package com.wei.store.ui
+package com.wei.store.ui.viewmodel
 
+import android.content.Intent
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.wei.common.base.BaseViewModel
 import com.wei.store.repo.StoreRepo
+import com.wei.store.ui.StoreCarActivity
 import com.wei.store.ui.adapter.StoreProductListAdapter
 
 /**
@@ -32,5 +34,6 @@ class StoreFragmentViewModel(val repo: StoreRepo) : BaseViewModel() {
     //根据类别id，获取商品列表
     suspend fun getProductListById(id: Int? =null)
     =repo.getStoreProduct(id).cachedIn(viewModelScope)
+
 
 }

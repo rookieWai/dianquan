@@ -1,21 +1,14 @@
 package com.wei.store.ui
 
 
-import android.content.Intent
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseActivity
-import com.wei.common.ktx.context
 import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.store.R
 import com.wei.store.databinding.ActivityProductDetailBinding
 import com.wei.store.ui.adapter.MyBannerAdapter
+import com.wei.store.ui.viewmodel.ProductDetailActivityViewModel
 import com.wei.store.utils.SplitString
-import com.youth.banner.adapter.BannerAdapter
-import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.indicator.CircleIndicator
-import kotlinx.android.synthetic.main.activity_product_detail.*
-import kotlinx.android.synthetic.main.item_store_product.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -28,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
-    private val viewModel:ProductDetailViewModel by viewModel()
+    private val activityViewModel: ProductDetailActivityViewModel by viewModel()
 
     override fun getLayoutRes()= R.layout.activity_product_detail
 
@@ -41,7 +34,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
     override fun initConfig() {
         super.initConfig()
         mBinding.apply {
-            vm=viewModel
+            vm=activityViewModel
             //返回按钮点击事件
             toolbar.setNavigationOnClickListener {
                 finish()
@@ -57,7 +50,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
         }
 
 
-        viewModel.apply {
+        activityViewModel.apply {
             //获取商品详情
             getProductDetail(intent.getIntExtra("id",26))
         }
@@ -67,7 +60,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
     override fun initData() {
         super.initData()
-        viewModel.apply {
+        activityViewModel.apply {
             //添加轮播图的数据
             liveProductDetailRsp.observerKt {
                 //后台返回的数据为String，将其转成列表

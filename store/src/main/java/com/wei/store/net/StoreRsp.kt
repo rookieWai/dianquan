@@ -226,3 +226,28 @@ data class ProductDetailRsp(
 
 
 
+class CarListRsp : ArrayList<CarListRsp.CarListRspItem>(){
+    @Keep
+    data class CarListRspItem(
+        val createDate: String?,
+        val deleteStatus: Int,
+        val id: Int,
+        val memberId: Int,
+        val memberNickname: String?,
+        val modifyDate: String?,
+        val price: Double,
+        val productAttr: String?,
+        val productBrand: String?,
+        val productCategoryId: Int,
+        val productId: Int,
+        val productName: String?,
+        val productPic: String?,
+        val productSkuCode: String?,
+        val productSkuId: Int,
+        val productSn: String?,
+        val productSubTitle: String?,
+        val quantity: Int
+    )
+}
+
+

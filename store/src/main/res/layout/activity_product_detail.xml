@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.wei.store.ui.ProductDetailViewModel" />
+            type="com.wei.store.ui.viewmodel.ProductDetailActivityViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

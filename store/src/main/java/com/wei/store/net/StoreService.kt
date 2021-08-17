@@ -32,5 +32,10 @@ interface StoreService {
     //根据商品id获取商品详情
     @GET("product/detail/{id}")
     fun getProductDetailById(@Path("id") id:Int):Call<BaseDQRsp>
+
+    //获取购物车列表
+    @GET("cart/list")
+    fun getCarList():Call<BaseDQRsp>
+
 }
 

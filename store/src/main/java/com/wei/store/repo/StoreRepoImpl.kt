@@ -11,10 +11,7 @@ import com.wei.service.network.onBizError
 import com.wei.service.network.onBizOK
 import com.wei.service.network.onFailure
 import com.wei.service.network.onSuccess
-import com.wei.store.net.ProductDetailRsp
-import com.wei.store.net.StoreProductRsp
-import com.wei.store.net.StoreService
-import com.wei.store.net.StoreTabRsp
+import com.wei.store.net.*
 import com.wei.store.repo.pagingsource.StoreProductListPagingSource
 import kotlinx.coroutines.flow.Flow
 
@@ -31,10 +28,13 @@ class StoreRepoImpl(private val storeService: StoreService): StoreRepo {
     private val _storeTabRsp=MutableLiveData<StoreTabRsp>()
     private val _storeProductRsp=MutableLiveData<StoreProductRsp>()
     private val _productDetailRsp=MutableLiveData<ProductDetailRsp>()
+    private val _carListRsp=MutableLiveData<CarListRsp>()
+
 
     override val liveStoreTab: LiveData<StoreTabRsp> = _storeTabRsp
     override val liveStoreProduct: LiveData<StoreProductRsp> =  _storeProductRsp
     override val liveProductDetail: LiveData<ProductDetailRsp?> = _productDetailRsp
+    override val liveCarList: LiveData<CarListRsp?> = _carListRsp
 
     //商品分类
     override suspend fun getStoreTabRsp() {
@@ -98,4 +98,25 @@ class StoreRepoImpl(private val storeService: StoreService): StoreRepo {
                 LogUtils.e("商品详情接口异常 ${it.message}")
             }
     }
+
+    override suspend fun getCarList() {
+        storeService.getCarList()
+            .serverData()
+            .onSuccess {
+                onBizOK <CarListRsp>{ code, data, message ->
+                    _carListRsp.value=data
+                    LogUtils.i("购物车列表接口 BizOK $data")
+                }
+                onBizError { code, message ->
+                    _productDetailRsp.value=null
+                    LogUtils.w("购物车列表接口 BizError $code $message" )
+                }
+            }
+            .onFailure {
+                LogUtils.e("购物车列表接口异常 ${it.message}")
+            }
+
+    }
+
+
 }

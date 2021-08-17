@@ -2,6 +2,7 @@ package com.wei.store.repo
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
+import com.wei.store.net.CarListRsp
 import com.wei.store.net.ProductDetailRsp
 import com.wei.store.net.StoreProductRsp
 import com.wei.store.net.StoreTabRsp
@@ -22,6 +23,8 @@ interface StoreRepo {
     val liveStoreProduct:LiveData<StoreProductRsp>
     //商品详情数据
     val liveProductDetail:LiveData<ProductDetailRsp?>
+    //获取购物车list
+    val liveCarList:LiveData<CarListRsp?>
 
     //用于调用获取商品分类的接口
     suspend fun getStoreTabRsp(){}
@@ -31,8 +34,11 @@ interface StoreRepo {
         productCategoryId:Int?,
     ) :Flow<PagingData<StoreProductRsp.Data>>
 
-   //根据商品id获取商品详情
+    //根据商品id获取商品详情
     suspend fun getProductDetail(
        id:Int
     )
+
+    //获取购物车list
+    suspend fun getCarList()
 }

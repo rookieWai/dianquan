@@ -16,6 +16,7 @@ import com.wei.store.R
 import com.wei.store.databinding.FragmentStoreBinding
 import com.wei.store.net.StoreTabRsp
 import com.wei.store.ui.adapter.StoreProductListAdapter
+import com.wei.store.ui.viewmodel.StoreFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,7 +30,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class StoreFragment : BaseFragment() {
 
-    private val viewModel:StoreFragmentViewModel by viewModel()
+    private val viewModel: StoreFragmentViewModel by viewModel()
 
     override fun getLayoutRes()= R.layout.fragment_store
 
@@ -45,26 +46,15 @@ class StoreFragment : BaseFragment() {
         startActivity(intent)
     }
 
+    private lateinit var mBinding: FragmentStoreBinding
 
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
-        return FragmentStoreBinding.bind(view).apply {
 
+        return FragmentStoreBinding.bind(view).apply {
+            mBinding=this
             rvProduct.adapter=storeProductListAdapter
 
-            //搜索栏响应
-            etSearch.setOnEditorActionListener { p0, p1, p2 ->
-                if (p1 == EditorInfo.IME_ACTION_SEARCH) {
-                    ToastUtils.showShort(etSearch.text)
-                    //关闭软键盘
-                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow((context as Activity).currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-
-                }
-
-                true
-            }
-
-            //设置标签栏数据
+            //绑定标签栏数据
             viewModel.liveStoreTabRsp.observerKt {
                 //移除原有的标签
                 tlStore.removeAllTabs()
@@ -82,7 +72,29 @@ class StoreFragment : BaseFragment() {
                         }
                     }
                 }
+            }
 
+            //设置刷新进度条的颜色
+            swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
+
+        }
+    }
+
+    override fun initConfig() {
+        super.initConfig()
+        viewModel.getTab()
+        mBinding.apply {
+            //搜索栏响应
+            etSearch.setOnEditorActionListener { p0, p1, p2 ->
+                if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                    ToastUtils.showShort(etSearch.text)
+                    //关闭软键盘
+                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow((context as Activity).currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+
+                }
+
+                true
             }
 
             //点击tab的响应事件
@@ -104,12 +116,23 @@ class StoreFragment : BaseFragment() {
 
                 }
             })
-        }
-    }
+            viewModel.apply {
+                //设置下拉刷新的监听器
+                swipeRefresh.setOnRefreshListener {
+                    val tab: TabLayout.Tab? =tlStore.getTabAt(tlStore.selectedTabPosition)
+                    if (tab != null) {
+                        refreshData(map[tab.text])
+                        swipeRefresh.isRefreshing=false //表示刷新时间结束，并隐藏进度条
+                    }
+                }
+            }
 
-    override fun initConfig() {
-        super.initConfig()
-        viewModel.getTab()
+            ibCar.setOnClickListener {
+                val intent=Intent(context,StoreCarActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
     }
 
     //数据请求

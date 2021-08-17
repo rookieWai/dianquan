@@ -2,7 +2,9 @@
 <layout>
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.wei.store.ui.viewmodel.StoreFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,6 +82,15 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@mipmap/shopping_basket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

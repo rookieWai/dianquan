@@ -1,4 +1,4 @@
-package com.wei.store.ui
+package com.wei.store.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.wei.common.base.BaseViewModel
@@ -12,9 +12,9 @@ import com.wei.store.repo.StoreRepo
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
-class ProductDetailViewModel(private val repo:StoreRepo) : BaseViewModel() {
+class ProductDetailActivityViewModel(private val repo:StoreRepo) : BaseViewModel() {
 
-    val liveProductDetailRsp=repo.liveProductDetail
+    var liveProductDetailRsp=repo.liveProductDetail
 
     fun getProductDetail(id:Int){
         serverAwait {

@@ -17,23 +17,25 @@
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/layout/menu.xml" value="0.26510416666666664" />
         <entry key="..\:/androidproj/dianquan/mine/src/main/res/menu/album_menu.xml" value="0.21752136752136753" />
         <entry key="..\:/androidproj/dianquan/service/src/main/res/drawable/ic_back.xml" value="0.22037037037037038" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/ minus.xml" value="0.14722222222222223" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/att.xml" value="0.17407407407407408" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.22784810126582278" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable-anydpi/share.xml" value="0.17407407407407408" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/drawable/ic_accelerator_24px.xml" value="0.39375" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/activity_product_car.xml" value="0.22" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/activity_product_detail.xml" value="0.15" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/activity_store_car.xml" value="0.20811965811965813" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/fragment_product_deatil.xml" value="0.30982905982905984" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/fragment_store.xml" value="0.2" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_menu.xml" value="0.21752136752136753" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_product_car.xml" value="0.12" />
+        <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_store_car.xml" value="0.20811965811965813" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/layout/item_store_product.xml" value="0.25" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/menu/f.xml" value="0.21367521367521367" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/menu/product_detail_bottom_menu.xml" value="0.18" />
         <entry key="..\:/androidproj/dianquan/store/src/main/res/menu/product_detail_top_bar_menu.xml" value="0.21752136752136753" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/store/src/main/res/drawable-anydpi/att.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
