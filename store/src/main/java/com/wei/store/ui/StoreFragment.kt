@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.tabs.TabLayout
 import com.wei.common.base.BaseFragment
+import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.store.R
 import com.wei.store.databinding.FragmentStoreBinding
 import com.wei.store.net.StoreTabRsp
@@ -91,7 +92,7 @@ class StoreFragment : BaseFragment() {
                     //关闭软键盘
                     val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow((context as Activity).currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-
+                    etSearch.text=null
                 }
 
                 true
@@ -117,7 +118,29 @@ class StoreFragment : BaseFragment() {
                 }
             })
             viewModel.apply {
-                //设置下拉刷新的监听器
+
+            }
+
+            ibCar.setOnClickListener {
+                val intent=Intent(context,StoreCarActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+    }
+
+    override fun initData() {
+        super.initData()
+
+        viewModel.apply {
+            //加载进度条显示
+            isLoading.observe(viewLifecycleOwner) {
+                //协程block获取数据代码块是否结束，协程结束时为false
+                mBinding.pbStore.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
+
+            //设置下拉刷新的监听器
+            mBinding.apply {
                 swipeRefresh.setOnRefreshListener {
                     val tab: TabLayout.Tab? =tlStore.getTabAt(tlStore.selectedTabPosition)
                     if (tab != null) {
@@ -127,12 +150,8 @@ class StoreFragment : BaseFragment() {
                 }
             }
 
-            ibCar.setOnClickListener {
-                val intent=Intent(context,StoreCarActivity::class.java)
-                startActivity(intent)
-            }
-
         }
+
     }
 
     //数据请求
@@ -144,5 +163,6 @@ class StoreFragment : BaseFragment() {
             }
         }
     }
+
 
 }

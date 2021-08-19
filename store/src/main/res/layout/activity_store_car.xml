@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name="vm"
+            type="com.wei.store.ui.viewmodel.StoreCarActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +23,7 @@
             android:elevation="0dp"
             app:navigationIcon="@drawable/back"
             app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/car_top_bar_menu"
             >
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView"
@@ -32,6 +35,9 @@
                 android:textSize="15sp"
                 tools:layout_editor_absoluteX="176dp"
                 tools:layout_editor_absoluteY="26dp" />
+
+
+
         </com.google.android.material.appbar.MaterialToolbar>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -61,44 +67,38 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                app:layout_constraintRight_toLeftOf="@id/tv_total"
+                app:layout_constraintRight_toLeftOf="@id/tv_total_view"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_total"
-                android:layout_width="0dp"
+            <FrameLayout
+                android:id="@+id/tv_total_view"
                 android:layout_height="wrap_content"
-                app:layout_constraintHorizontal_weight="1"
-                android:text="合计："
-                android:gravity="center|right"
-                android:textColor="@android:color/darker_gray"
-                app:layout_constraintRight_toLeftOf="@id/tv_total_price"
+                android:layout_width="0dp"
+                app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintLeft_toRightOf="@id/select_all"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_total_price"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                app:layout_constraintHorizontal_weight="1"
-                android:text="¥ 0"
-                android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
-                android:gravity="center|left"
-                app:layout_constraintLeft_toRightOf="@id/tv_total"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/tv_cart_pay"
-                tools:text="¥ 500"
-                />
+                app:layout_constraintRight_toLeftOf="@id/bt_cart_pay"
+                android:layout_marginEnd="5dp"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|right"
+                    android:text="@{`总和：¥ `+vm.observablePrice}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    tools:text="¥ 500" />
+
+            </FrameLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/tv_cart_pay"
+                android:id="@+id/bt_cart_pay"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 app:layout_constraintHorizontal_weight="1"
@@ -107,7 +107,7 @@
                 android:textColor="@android:color/white"
                 app:cornerRadius="20dp"
                 android:layout_marginEnd="5dp"
-                app:layout_constraintLeft_toRightOf="@id/tv_total_price"
+                app:layout_constraintLeft_toRightOf="@id/tv_total_view"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/bt_cart_delete"/>
@@ -122,13 +122,40 @@
                 app:cornerRadius="20dp"
                 android:layout_marginEnd="5dp"
                 android:textColor="@android:color/white"
-                app:layout_constraintLeft_toRightOf="@id/tv_cart_pay"
+                app:layout_constraintLeft_toRightOf="@id/bt_cart_pay"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_store_car"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"/>
+
+
+
+        <Button
+            android:id="@+id/bt_to_go_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购物车空了，点击去购物吧"
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

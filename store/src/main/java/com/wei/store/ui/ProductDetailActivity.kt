@@ -1,6 +1,7 @@
 package com.wei.store.ui
 
 
+import android.view.View
 import com.wei.common.base.BaseActivity
 import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.store.R
@@ -21,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
-    private val activityViewModel: ProductDetailActivityViewModel by viewModel()
+    private val viewModel: ProductDetailActivityViewModel by viewModel()
 
     override fun getLayoutRes()= R.layout.activity_product_detail
 
@@ -34,7 +35,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
     override fun initConfig() {
         super.initConfig()
         mBinding.apply {
-            vm=activityViewModel
+            vm=viewModel
             //返回按钮点击事件
             toolbar.setNavigationOnClickListener {
                 finish()
@@ -50,7 +51,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
         }
 
 
-        activityViewModel.apply {
+        viewModel.apply {
             //获取商品详情
             getProductDetail(intent.getIntExtra("id",26))
         }
@@ -60,7 +61,13 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
     override fun initData() {
         super.initData()
-        activityViewModel.apply {
+        viewModel.apply {
+            //加载进度条显示
+            isLoading.observe(viewLifeCycleOwner) {
+                //协程block获取数据代码块是否结束，协程结束时为false
+                mBinding.pbProductDetail.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
+
             //添加轮播图的数据
             liveProductDetailRsp.observerKt {
                 //后台返回的数据为String，将其转成列表

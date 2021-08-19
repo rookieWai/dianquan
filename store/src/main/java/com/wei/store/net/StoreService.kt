@@ -3,6 +3,7 @@ package com.wei.store.net
 import com.wei.service.network.BaseDQRsp
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -36,6 +37,18 @@ interface StoreService {
     //获取购物车列表
     @GET("cart/list")
     fun getCarList():Call<BaseDQRsp>
+
+    //修改购物车中某个商品的数量
+    @GET("cart/update/quantity")
+    fun updateCarProductQuantity(@Query("id") id:Int,@Query("quantity") quantity:Int):Call<BaseDQRsp>
+
+    //清空购物车
+    @POST("cart/clear")
+    fun clearCar():Call<BaseDQRsp>
+
+    //根据id列表删除购物车中商品
+    @POST("cart/delete")
+    fun deleteCarByListId(@Query("ids") ids:List<Int>):Call<BaseDQRsp>
 
 }
 

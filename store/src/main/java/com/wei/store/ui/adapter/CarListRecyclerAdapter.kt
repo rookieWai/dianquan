@@ -1,12 +1,12 @@
 package com.wei.store.ui.adapter
 
-import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.wei.store.databinding.ItemStoreCarBinding
 import com.wei.store.net.CarListRsp
+import org.intellij.lang.annotations.JdkConstants
 
 /**
  * @ClassName CarListAdapter
@@ -16,27 +16,54 @@ import com.wei.store.net.CarListRsp
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
-class CarListRecyclerAdapter(private val callback: (CarListRsp.CarListRspItem) -> Unit) : RecyclerView.Adapter<CourseVH>() {
+class CarListRecyclerAdapter(private val callback: (View, List<CarListRsp.CarListRspItem>, Int,HashMap<Int,Boolean>) -> Unit
+) : RecyclerView.Adapter<CourseVH>() {
 
-    private val mList = mutableListOf<CarListRsp.CarListRspItem>()
+    val mList = mutableListOf<CarListRsp.CarListRspItem>()
+
+    val map=HashMap<Int,Boolean>()
+
+    var totalPrices:Double=0.0
 
     /*
     * recyclervice
     * clear 是否清空list初始化
     * */
-    fun submitClear(list: List<CarListRsp.CarListRspItem>, clear: Boolean = false) {
+    fun submitClear(list: List<CarListRsp.CarListRspItem> , clear: Boolean = false) {
         if (clear) mList.clear()
         mList.addAll(list)
+        var num = 0
+        mList.forEach { _ ->
+            map[++num]=false
+        }
+        totalPrices=0.0
+        list.forEach{
+            totalPrices+=it.price*it.quantity
+        }
         notifyDataSetChanged()
     }
+
+    /**
+     * 局部更新
+     */
+    fun submitPart(list: List<CarListRsp.CarListRspItem>,positions:Int) {
+        mList.clear()
+        mList.addAll(list)
+        totalPrices=0.0
+        list.forEach{
+            totalPrices+=it.price*it.quantity
+        }
+        notifyItemChanged(positions)
+    }
+
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CourseVH.createVH(parent)
 
     override fun onBindViewHolder(holder: CourseVH, position: Int) {
         holder.bind(mList[position])
-        holder.itemView.setOnClickListener {
-            callback.invoke(mList[position])
-        }
+        callback.invoke(holder.itemView,mList,position,map)
     }
 
     override fun getItemCount() = mList.size

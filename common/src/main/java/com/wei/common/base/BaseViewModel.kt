@@ -20,7 +20,7 @@ open class BaseViewModel : ViewModel() {
 
     //jobs列表 job异步任务
     private val jobs= mutableListOf<Job>()
-    private val isLoading=MutableLiveData<Boolean>()  //表示网络请求的状态
+    val isLoading=MutableLiveData<Boolean>()  //表示网络请求的状态
 
     /**
      * 使用协程进行网络请求

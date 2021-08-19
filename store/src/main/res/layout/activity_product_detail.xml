@@ -186,6 +186,14 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
 
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_product_detail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

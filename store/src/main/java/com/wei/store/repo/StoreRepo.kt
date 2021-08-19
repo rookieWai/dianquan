@@ -1,12 +1,16 @@
 package com.wei.store.repo
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DifferCallback
 import androidx.paging.PagingData
+import com.wei.service.network.BaseDQRsp
 import com.wei.store.net.CarListRsp
 import com.wei.store.net.ProductDetailRsp
 import com.wei.store.net.StoreProductRsp
 import com.wei.store.net.StoreTabRsp
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Call
+import retrofit2.http.POST
 
 /**
  * @ClassName StoreRepo
@@ -40,5 +44,19 @@ interface StoreRepo {
     )
 
     //获取购物车list
-    suspend fun getCarList()
+    suspend fun getCarList(callback: (dataList:ArrayList<CarListRsp.CarListRspItem>) -> Unit)
+
+    //修改购物车中某个商品的数量
+    suspend fun updateCarProductQuantity(
+        id:Int,
+        quantity:Int,
+        callback: ()->Unit  //用于更新列表的回调方法
+    )
+
+    //清空购物车
+    suspend fun clearCar(callback: () -> Unit)
+
+    //根据id列表删除购物车中商品
+    suspend fun deleteCarByListId(list:List<Int>,callback: () -> Unit)
+
 }

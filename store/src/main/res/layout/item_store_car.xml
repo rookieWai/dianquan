@@ -102,35 +102,32 @@
                 app:layout_constraintTop_toTopOf="@id/tv_item_price"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <Button
+                    android:id="@+id/bt_minus"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/minus"
-                    android:background="@color/white"
+                    android:background="@drawable/minus"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_quantity"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:inputType="number"
                     android:text="@{``+info.quantity}"
                     android:gravity="center"
                     android:background="@null"
                     android:textSize="13sp"
                     />
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <Button
+                    android:id="@+id/bt_add"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/add"
-                    android:background="@color/white"
+                    android:background="@drawable/add"
                     />
-
-
 
 
 

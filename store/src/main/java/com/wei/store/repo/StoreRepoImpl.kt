@@ -6,7 +6,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.network.support.serverData
+import com.wei.common.network.support.serverRsp
 import com.wei.service.network.onBizError
 import com.wei.service.network.onBizOK
 import com.wei.service.network.onFailure
@@ -99,12 +101,15 @@ class StoreRepoImpl(private val storeService: StoreService): StoreRepo {
             }
     }
 
-    override suspend fun getCarList() {
+    override suspend fun getCarList(callback: (dataList:ArrayList<CarListRsp.CarListRspItem>) -> Unit) {
         storeService.getCarList()
             .serverData()
             .onSuccess {
                 onBizOK <CarListRsp>{ code, data, message ->
                     _carListRsp.value=data
+                    if (data != null) {
+                        callback.invoke(data)
+                    }
                     LogUtils.i("购物车列表接口 BizOK $data")
                 }
                 onBizError { code, message ->
@@ -116,6 +121,64 @@ class StoreRepoImpl(private val storeService: StoreService): StoreRepo {
                 LogUtils.e("购物车列表接口异常 ${it.message}")
             }
 
+    }
+
+    override suspend fun updateCarProductQuantity(id: Int, quantity: Int, callback: () -> Unit) {
+        storeService.updateCarProductQuantity(id,quantity)
+            .serverData()
+            .onSuccess {
+                onBizOK<Int> { code, data, message ->
+                    LogUtils.i("修改购物车商品数量接口 BizOK $data")
+                    callback.invoke()  //用于更新列表的回调方法
+                }
+                onBizError { code, message ->
+                    LogUtils.w("修改购物车商品数量接口 BizError $code $message" )
+                    ToastUtils.setGravity(0,0,0)
+                    ToastUtils.showShort("修改失败")
+                }
+            }
+            .onFailure {
+                LogUtils.e("修改购物车商品数量接口异常 ${it.message}")
+            }
+    }
+
+    override suspend fun clearCar(callback: () -> Unit) {
+        storeService.clearCar()
+            .serverData()
+            .onSuccess {
+                onBizOK<Int> { code, data, message ->
+                    LogUtils.i("清空购物车接口 BizOK $data")
+                    callback.invoke()  //成功后，用于更新列表的回调方法
+                }
+                onBizError { code, message ->
+                    LogUtils.w("清空购物车接口 BizError $code $message" )
+                    ToastUtils.setGravity(0,0,0)
+                    ToastUtils.showShort("清空失败")
+                }
+            }
+            .onFailure {
+                LogUtils.e("清空购物车接口 ${it.message}")
+            }
+
+    }
+
+    override suspend fun deleteCarByListId(list: List<Int>, callback: () -> Unit) {
+        storeService.deleteCarByListId(list)
+            .serverData()
+            .onSuccess {
+                onBizOK<Int> { code, data, message ->
+                    LogUtils.i("删除购物车某些商品接口 BizOK $data")
+                    callback.invoke()  //成功后，用于更新列表的回调方法
+                }
+                onBizError { code, message ->
+                    LogUtils.w("删除购物车某些商品接口 BizError $code $message" )
+                    ToastUtils.setGravity(0,0,0)
+                    ToastUtils.showShort("删除失败")
+                }
+            }
+            .onFailure {
+                LogUtils.e("删除购物车某些商品接口 ${it.message}")
+            }
     }
 
 

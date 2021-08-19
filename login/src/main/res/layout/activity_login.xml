@@ -68,7 +68,6 @@
                 android:drawableStart="@drawable/username"
                 android:drawablePadding="8dp"
                 android:hint="请输入用户名"
-
                 android:text="@={vm.username}"/>
 
 
