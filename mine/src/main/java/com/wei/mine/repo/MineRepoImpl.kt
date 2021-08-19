@@ -44,7 +44,6 @@ class MineRepoImpl(private val service:MineService): MineRepo{
                     return@onBizError
                 }
             }
-
     }
 
 }

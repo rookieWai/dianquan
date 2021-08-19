@@ -13,6 +13,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.tabs.TabLayout
 import com.wei.common.base.BaseFragment
 import com.wei.common.ktx.viewLifeCycleOwner
+import com.wei.common.network.config.gToken
+import com.wei.common.network.utils.MySpUtils
 import com.wei.store.R
 import com.wei.store.databinding.FragmentStoreBinding
 import com.wei.store.net.StoreTabRsp
@@ -121,9 +123,16 @@ class StoreFragment : BaseFragment() {
 
             }
 
+            //点击购物篮跳转到购物篮界面
             ibCar.setOnClickListener {
-                val intent=Intent(context,StoreCarActivity::class.java)
-                startActivity(intent)
+                //判断登录状态
+                if(MySpUtils.getString("token","0")=="0"){
+                    ToastUtils.setGravity(0,0,0)
+                    ToastUtils.showShort("请先登录")
+                }else{
+                    val intent=Intent(context,StoreCarActivity::class.java)
+                    startActivity(intent)
+                }
             }
 
         }

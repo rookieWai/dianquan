@@ -14,5 +14,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:navGraph="@navigation/graph_mine" />
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

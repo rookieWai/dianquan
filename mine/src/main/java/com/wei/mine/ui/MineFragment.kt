@@ -31,7 +31,7 @@ class MineFragment : BaseFragment(){
             vm=viewModel
             //登出
             btnLogoutMine.setOnClickListener {
-                gToken.value=" "
+                gToken.value=null
                 MySpUtils.remove("token")
                 ARouter.getInstance().build("/login/login").navigation()
             }
@@ -48,6 +48,11 @@ class MineFragment : BaseFragment(){
 
                 }
             }
+            //加载进度条显示
+            viewModel.isLoading.observe(viewLifecycleOwner) {
+                //协程block获取数据代码块是否结束，协程结束时为false
+                pbMine.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
 
         }
 
@@ -59,6 +64,7 @@ class MineFragment : BaseFragment(){
         gToken.observerKt {
             viewModel.getUserInfo()
         }
+
     }
 
 

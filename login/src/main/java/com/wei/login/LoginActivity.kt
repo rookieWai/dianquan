@@ -3,8 +3,10 @@ package com.wei.login
 
 
 
+import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.wei.common.base.BaseActivity
+import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.common.network.config.gToken
 import com.wei.common.network.utils.MySpUtils
 import com.wei.login.databinding.ActivityLoginBinding
@@ -34,6 +36,7 @@ class LoginActivity :BaseActivity<ActivityLoginBinding>(){
             toolBar.setNavigationOnClickListener {
                 finish()
             }
+
         }
     }
 
@@ -46,6 +49,13 @@ class LoginActivity :BaseActivity<ActivityLoginBinding>(){
                 MySpUtils.put("token", gToken.value)
                 finish()
             }
+
+            //加载进度条显示
+            isLoading.observe(viewLifeCycleOwner) {
+                //协程block获取数据代码块是否结束，协程结束时为false
+                mBinding.pbLogin.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
+
         }
 
     }

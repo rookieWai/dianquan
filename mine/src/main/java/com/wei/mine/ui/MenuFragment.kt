@@ -23,4 +23,6 @@ class MenuFragment : BaseFragment() {
         return FragmentMenuBinding.bind(view)
     }
 
+
+
 }
