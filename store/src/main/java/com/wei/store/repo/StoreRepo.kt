@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DifferCallback
 import androidx.paging.PagingData
 import com.wei.service.network.BaseDQRsp
-import com.wei.store.net.CarListRsp
-import com.wei.store.net.ProductDetailRsp
-import com.wei.store.net.StoreProductRsp
-import com.wei.store.net.StoreTabRsp
+import com.wei.store.net.*
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.http.POST
@@ -43,6 +40,9 @@ interface StoreRepo {
        id:Int
     )
 
+    //添加商品到购物车
+    suspend fun addProductToCar(data: ProductToCarData)
+
     //获取购物车list
     suspend fun getCarList(callback: (dataList:ArrayList<CarListRsp.CarListRspItem>) -> Unit)
 
@@ -58,5 +58,7 @@ interface StoreRepo {
 
     //根据id列表删除购物车中商品
     suspend fun deleteCarByListId(list:List<Int>,callback: () -> Unit)
+
+
 
 }

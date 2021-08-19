@@ -1,15 +1,21 @@
 package com.wei.store.ui
 
 
+import android.content.Intent
 import android.view.View
+import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseActivity
 import com.wei.common.ktx.viewLifeCycleOwner
+import com.wei.common.network.utils.MySpUtils
 import com.wei.store.R
 import com.wei.store.databinding.ActivityProductDetailBinding
+import com.wei.store.net.ProductToCarData
 import com.wei.store.ui.adapter.MyBannerAdapter
 import com.wei.store.ui.viewmodel.ProductDetailActivityViewModel
 import com.wei.store.utils.SplitString
 import com.youth.banner.indicator.CircleIndicator
+import kotlinx.android.synthetic.main.activity_store_car.*
+import kotlinx.android.synthetic.main.item_store_product.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -25,6 +31,8 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
     private val viewModel: ProductDetailActivityViewModel by viewModel()
 
     override fun getLayoutRes()= R.layout.activity_product_detail
+
+    private lateinit var data : ProductToCarData
 
     //轮播图列表
     private val bannerList = ArrayList<String>()
@@ -47,6 +55,17 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
                     isAutoLoop(false)  //不自动轮播
                     indicator= CircleIndicator(context)//轮播图上的点
                 }
+
+            //添加商品到购物车按钮
+            btToCar.setOnClickListener  {
+                //判断登录状态
+                if(MySpUtils.getString("token","0")=="0"){
+                    ToastUtils.setGravity(0,0,0)
+                    ToastUtils.showShort("请先登录")
+                }else{
+                    viewModel.addProductToCar(data)
+                }
+            }
 
         }
 
@@ -75,6 +94,18 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
                 bannerList.clear()
                 bannerList.addAll(list)
                 bannerAdapter.notifyDataSetChanged()
+
+                it?.product?.apply {
+                    data= ProductToCarData(
+                        price?.toDouble(),
+                        id,
+                        name,
+                        intent.getStringExtra("pic"),
+                        subTitle,
+                        1
+                        )
+                }
+
             }
         }
 

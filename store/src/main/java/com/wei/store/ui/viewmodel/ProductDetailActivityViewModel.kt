@@ -2,6 +2,7 @@ package com.wei.store.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.wei.common.base.BaseViewModel
+import com.wei.store.net.ProductToCarData
 import com.wei.store.repo.StoreRepo
 
 /**
@@ -21,4 +22,11 @@ class ProductDetailActivityViewModel(private val repo:StoreRepo) : BaseViewModel
             repo.getProductDetail(id)
         }
     }
+
+    fun addProductToCar(data:ProductToCarData){
+        serverAwait {
+            repo.addProductToCar(data)
+        }
+    }
+
 }

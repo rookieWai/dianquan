@@ -151,6 +151,7 @@
             >
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/view_collect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/att"
@@ -169,6 +170,7 @@
                 />
 
             <Button
+                android:id="@+id/bt_to_car"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="加入购物篮"
@@ -176,6 +178,7 @@
                 />
 
             <Button
+                android:id="@+id/bt_buy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="立即购买"

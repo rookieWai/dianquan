@@ -251,3 +251,15 @@ class CarListRsp : ArrayList<CarListRsp.CarListRspItem>(){
 }
 
 
+
+
+@Parcelize
+@Keep
+data class ProductToCarData(
+    val price: Double,
+    val productId: Int,
+    val productName: String?,
+    val productPic: String?,
+    val productSubTitle: String?,
+    val quantity: Int
+):Parcelable

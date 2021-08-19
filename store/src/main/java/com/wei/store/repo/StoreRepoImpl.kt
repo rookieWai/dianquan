@@ -101,6 +101,25 @@ class StoreRepoImpl(private val storeService: StoreService): StoreRepo {
             }
     }
 
+    override suspend fun addProductToCar(data: ProductToCarData) {
+        storeService.addProductToCar(data)
+            .serverData()
+            .onSuccess {
+                onBizOK<Int> { code, data, message ->
+                    ToastUtils.showShort("添加成功")
+                    LogUtils.i("添加商品到购物车接口 BizOK $data")
+                }
+                onBizError { code, message ->
+                    ToastUtils.showShort("添加失败")
+                    LogUtils.w("添加商品到购物车接口 BizError $code $message" )
+                }
+            }
+            .onFailure {
+                ToastUtils.showShort("添加失败")
+                LogUtils.e("添加商品到购物车异常 ${it.message}")
+            }
+    }
+
     override suspend fun getCarList(callback: (dataList:ArrayList<CarListRsp.CarListRspItem>) -> Unit) {
         storeService.getCarList()
             .serverData()

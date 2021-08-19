@@ -46,6 +46,7 @@ class StoreFragment : BaseFragment() {
         val intent=Intent(context,ProductDetailActivity::class.java)
         //传递点击商品id
         intent.putExtra("id",it.id)
+        intent.putExtra("pic",it.pic)
         startActivity(intent)
     }
 
