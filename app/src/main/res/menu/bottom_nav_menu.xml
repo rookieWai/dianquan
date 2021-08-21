@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/home"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/storeFragment"
         android:icon="@drawable/store"
-        android:title="@string/title_store" />
+        android:title="@string/title_store"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/surveyFragment"
         android:icon="@drawable/survey"
-        android:title="@string/title_survey" />
+        android:title="@string/title_survey"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/dealFragment"
         android:icon="@drawable/deal"
-        android:title="@string/title_deal" />
+        android:title="@string/title_deal"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/mineFragment"
         android:icon="@drawable/mine"
-        android:title="@string/title_mine"/>
+        android:title="@string/title_mine"
+        app:showAsAction="ifRoom"/>
 
 </menu>

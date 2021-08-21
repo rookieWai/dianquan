@@ -87,14 +87,16 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
                 mBinding.pbProductDetail.visibility = if (it) View.VISIBLE else View.INVISIBLE
             }
 
-            //添加轮播图的数据
+
             liveProductDetailRsp.observerKt {
+                //添加轮播图的数据
                 //后台返回的数据为String，将其转成列表
                 val list= SplitString.getSplitString(it?.product?.albumPics)
                 bannerList.clear()
                 bannerList.addAll(list)
                 bannerAdapter.notifyDataSetChanged()
 
+                //加入购物车
                 it?.product?.apply {
                     data= ProductToCarData(
                         price?.toDouble(),

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="info"
-            type="com.wei.store.net.StoreProductRsp.Data"
+            type="com.wei.home.net.HomeContentRsp.HotProduct"
             />
     </data>
 
@@ -14,8 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="3dp"
         android:layout_marginHorizontal="5dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
         app:contentPadding="0dp">
 
         <LinearLayout
