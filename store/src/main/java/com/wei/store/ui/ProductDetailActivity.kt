@@ -52,7 +52,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
     override fun initConfig() {
         super.initConfig()
-
+        window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         ARouter.getInstance().inject(this);
 
         mBinding.apply {

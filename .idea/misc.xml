@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/androidproj/dianquan/app/src/main/res/drawable-v24/shape_info_bg.xml" value="0.25063291139240507" />
+        <entry key="..\:/androidproj/dianquan/app/src/main/res/drawable-v24/shape_splash_bg.xml" value="0.28425925925925927" />
         <entry key="..\:/androidproj/dianquan/app/src/main/res/layout/activity_main.xml" value="0.14" />
         <entry key="..\:/androidproj/dianquan/app/src/main/res/layout/activity_splash.xml" value="0.20811965811965813" />
         <entry key="..\:/androidproj/dianquan/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17685185185185184" />

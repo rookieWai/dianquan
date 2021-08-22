@@ -1,7 +1,8 @@
-package com.wei.dianquan
+        package com.wei.dianquan
 
 
 
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -44,6 +45,7 @@ class MainActivity :BaseActivity<ActivityMainBinding>(){
         super.initConfig()
         gToken.value=MySpUtils.getString("token"," ")
 
+        window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
     }
 
     //视图相关

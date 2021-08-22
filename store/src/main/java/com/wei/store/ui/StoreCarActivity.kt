@@ -131,7 +131,7 @@ class StoreCarActivity : BaseActivity<ActivityStoreCarBinding>() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun initConfig() {
         super.initConfig()
-
+        window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         mBinding.apply {
             vm=viewModel
             rvCar.adapter=carListAdapter

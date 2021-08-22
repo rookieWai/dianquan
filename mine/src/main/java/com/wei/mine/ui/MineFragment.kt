@@ -42,9 +42,9 @@ class MineFragment : BaseFragment(){
                 if (info == null) {
                     ARouter.getInstance().build("/login/login").navigation()
                 } else {
-                    val action =
-                        MineFragmentDirections.actionMineFragmentToUserInfoFragment()
-                    findNavController().navigate(action)
+//                    val action =
+//                        MineFragmentDirections.actionMineFragmentToUserInfoFragment()
+//                    findNavController().navigate(action)
 
                 }
             }

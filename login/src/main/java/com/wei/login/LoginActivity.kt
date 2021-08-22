@@ -42,6 +42,7 @@ class LoginActivity :BaseActivity<ActivityLoginBinding>(){
 
     override fun initConfig() {
         super.initConfig()
+        window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         viewModel.apply {
             liveLoginRsp.observerKt {
                 //ToastUtils.showShort("登录结果"+it.toString())

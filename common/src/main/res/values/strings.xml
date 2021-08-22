@@ -6,6 +6,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorWindowBackGround</item>
+
+
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <!-- 圆形图片 -->
