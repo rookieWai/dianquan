@@ -46,6 +46,10 @@ class HomeFragment : BaseFragment() {
                     indicator= CircleIndicator(context)//轮播图上的点
                 }
 
+            viewModel.isLoading.observe(viewLifecycleOwner) {
+                //协程block获取数据代码块是否结束，协程结束时为false
+                pbHome.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
         }
 
     }
@@ -54,6 +58,10 @@ class HomeFragment : BaseFragment() {
         super.initData()
         viewModel.apply {
             getHomeContent()
+
+            //加载进度条显示
+
+
         }
 
     }
@@ -70,6 +78,7 @@ class HomeFragment : BaseFragment() {
                 }
                 adapter.upRecyclerViewList(homeList)
             }
+
         }
         val list = ArrayList<String>()
         list.apply {
