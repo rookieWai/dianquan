@@ -1,4 +1,4 @@
-package com.wei.home.ui
+package com.wei.home.ui.adapter
 
 import com.bumptech.glide.Glide
 import com.youth.banner.adapter.BannerImageAdapter

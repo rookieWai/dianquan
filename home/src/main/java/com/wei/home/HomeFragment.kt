@@ -3,10 +3,10 @@ package com.wei.home
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
+import com.blankj.utilcode.util.LogUtils
 import com.wei.common.base.BaseFragment
-import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.home.databinding.FragmentHomeBinding
-import com.wei.home.ui.HomeBannerAdapter
+import com.wei.home.ui.adapter.HomeBannerAdapter
 import com.wei.home.ui.HomeFragmentViewModel
 import com.wei.home.ui.adapter.HomeMainAdapter
 import com.youth.banner.indicator.CircleIndicator
@@ -46,8 +46,6 @@ class HomeFragment : BaseFragment() {
                     indicator= CircleIndicator(context)//轮播图上的点
                 }
 
-
-
         }
 
     }
@@ -64,6 +62,7 @@ class HomeFragment : BaseFragment() {
         super.initData()
         viewModel.apply {
             liveHomeContent.observerKt {
+                homeList.clear()
                 if (it != null) {
                     it.brandList?.let { it1 -> homeList.add(it1) }
                     it.hotProductList?.let { it2->homeList.add(it2) }
@@ -81,6 +80,12 @@ class HomeFragment : BaseFragment() {
         }
         bannerList.addAll(list)
         bannerAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        homeList.clear()
+        adapter.clearRecyclerViewList()
     }
 
 }

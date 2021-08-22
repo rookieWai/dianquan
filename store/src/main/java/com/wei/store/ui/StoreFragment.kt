@@ -9,11 +9,10 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
+import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.tabs.TabLayout
 import com.wei.common.base.BaseFragment
-import com.wei.common.ktx.viewLifeCycleOwner
-import com.wei.common.network.config.gToken
 import com.wei.common.network.utils.MySpUtils
 import com.wei.store.R
 import com.wei.store.databinding.FragmentStoreBinding
@@ -42,12 +41,13 @@ class StoreFragment : BaseFragment() {
 
 
     private val storeProductListAdapter = StoreProductListAdapter {
-        //处理点击商品item的响应逻辑
-        val intent=Intent(context,ProductDetailActivity::class.java)
-        //传递点击商品id
-        intent.putExtra("id",it.id)
-        intent.putExtra("pic",it.pic)
-        startActivity(intent)
+        //处理点击商品item的响应逻辑，携带id跳转到详情页面
+        ARouter.getInstance()
+            .build("/store/productDetail")
+            .withInt("id",it.id)
+            .withString("pic",it.pic)
+            .navigation()
+
     }
 
     private lateinit var mBinding: FragmentStoreBinding
@@ -131,8 +131,9 @@ class StoreFragment : BaseFragment() {
                     ToastUtils.setGravity(0,0,0)
                     ToastUtils.showShort("请先登录")
                 }else{
-                    val intent=Intent(context,StoreCarActivity::class.java)
-                    startActivity(intent)
+                    ARouter.getInstance()
+                        .build("/store/car")
+                        .navigation()
                 }
             }
 

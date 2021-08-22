@@ -124,8 +124,8 @@ dependencies {
     //endregion
 
     //ARouter  路由
-    implementation 'com.alibaba:arouter-api:1.5.0'
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
     //liveData eventBus
     implementation 'com.jeremyliao:live-event-bus-x:1.7.2'
 

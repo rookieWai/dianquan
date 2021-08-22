@@ -3,6 +3,7 @@ package com.wei.home.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.launcher.ARouter
 import com.wei.home.databinding.ItemHomeBrandBinding
 import com.wei.home.databinding.ItemHomeHotProductBinding
 import com.wei.home.net.HomeContentRsp
@@ -26,7 +27,11 @@ class HomeHotProductAdapter(private val mList: List<HomeContentRsp.HotProduct>) 
         holder.bind(mList[position])
         //点击事件
         holder.itemView.setOnClickListener {
-
+            ARouter.getInstance()
+                .build("/store/productDetail")
+                .withInt("id",mList[position].id)
+                .withString("pic",mList[position].pic)
+                .navigation()
         }
     }
 

@@ -7,6 +7,7 @@ import android.os.Build
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseActivity
 import com.wei.common.ktx.context
@@ -30,6 +31,7 @@ import kotlin.collections.LinkedHashSet
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
+@Route(path = "/store/car")
 class StoreCarActivity : BaseActivity<ActivityStoreCarBinding>() {
 
     private val viewModel : StoreCarActivityViewModel by viewModel()

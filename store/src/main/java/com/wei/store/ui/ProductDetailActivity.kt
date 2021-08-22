@@ -1,8 +1,10 @@
 package com.wei.store.ui
 
 
-import android.content.Intent
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseActivity
 import com.wei.common.ktx.viewLifeCycleOwner
@@ -14,8 +16,6 @@ import com.wei.store.ui.adapter.MyBannerAdapter
 import com.wei.store.ui.viewmodel.ProductDetailActivityViewModel
 import com.wei.store.utils.SplitString
 import com.youth.banner.indicator.CircleIndicator
-import kotlinx.android.synthetic.main.activity_store_car.*
-import kotlinx.android.synthetic.main.item_store_product.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -26,6 +26,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * CSDN->https://blog.csdn.net/weiwai
  * github->https://github.com/rookieWai
  */
+
+@Route(path = "/store/productDetail")
 class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
     private val viewModel: ProductDetailActivityViewModel by viewModel()
@@ -40,8 +42,19 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
     //轮播适配器
     private val bannerAdapter by lazy { MyBannerAdapter(bannerList) }
 
+    @Autowired()
+    @JvmField
+    var id: Int=26
+
+    @Autowired()
+    @JvmField
+    var pic: String=" "
+
     override fun initConfig() {
         super.initConfig()
+
+        ARouter.getInstance().inject(this);
+
         mBinding.apply {
             vm=viewModel
             //返回按钮点击事件
@@ -69,10 +82,9 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
         }
 
-
         viewModel.apply {
             //获取商品详情
-            getProductDetail(intent.getIntExtra("id",26))
+            getProductDetail(id)
         }
 
 
@@ -102,7 +114,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
                         price?.toDouble(),
                         id,
                         name,
-                        intent.getStringExtra("pic"),
+                        pic,
                         subTitle,
                         1
                         )
