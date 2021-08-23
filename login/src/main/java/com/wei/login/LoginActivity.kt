@@ -4,7 +4,9 @@ package com.wei.login
 
 
 import android.view.View
+import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.ToastUtils
 import com.wei.common.base.BaseActivity
 import com.wei.common.ktx.viewLifeCycleOwner
 import com.wei.common.network.config.gToken
@@ -35,6 +37,17 @@ class LoginActivity :BaseActivity<ActivityLoginBinding>(){
             vm=viewModel
             toolBar.setNavigationOnClickListener {
                 finish()
+            }
+
+            //注册按钮
+            toolBar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.login_register->{
+                        ToastUtils.setGravity(0,0,0)
+                        ToastUtils.showShort("注册尚未开放")
+                    }
+                }
+                return@setOnMenuItemClickListener super.onOptionsItemSelected(it);
             }
 
         }

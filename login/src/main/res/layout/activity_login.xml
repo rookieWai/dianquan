@@ -21,6 +21,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
+            app:menu="@menu/login_menu"
+            app:titleTextColor="@color/colorPrimary"
             android:fitsSystemWindows="true">
 
             <androidx.appcompat.widget.AppCompatTextView
