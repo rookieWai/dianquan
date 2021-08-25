@@ -91,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:maxLength="20"
                 android:singleLine="true"
+                android:inputType="textPassword"
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="8dp"
                 android:hint="请输入密码"
