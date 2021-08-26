@@ -39,7 +39,7 @@ class StoreCarActivity : BaseActivity<ActivityStoreCarBinding>() {
     override fun getLayoutRes() = R.layout.activity_store_car
 
 
-    //set维护所选择中的单项，传入此项数据的id(数据表中的key值)，可用与删除结算
+    //set维护所选择中的单项，传入此项数据的id(数据表中的key值)，可用与于删除结算
     private var set:LinkedHashSet<Int> = LinkedHashSet()
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -214,10 +214,12 @@ class StoreCarActivity : BaseActivity<ActivityStoreCarBinding>() {
                         viewModel.apply {
                             deleteCarByListId(ArrayList(set),callback = {
                                 getCarList(callback = {
-                                    viewModel.liveCarList.value?.let { carListAdapter.submitClear(it,true) }
-                                    set.clear()
-                                    viewModel.observablePrice.set(0.0)
-                                    mBinding.selectAll.isChecked=false
+                                    viewModel.liveCarList.value?.let {
+                                        mBinding.selectAll.isChecked=false
+                                        carListAdapter.submitClear(it,true)
+                                        set.clear()
+                                        viewModel.observablePrice.set(0.0)
+                                    }
                                 })
 
                             })

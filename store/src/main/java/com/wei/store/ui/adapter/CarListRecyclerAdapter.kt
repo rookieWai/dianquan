@@ -34,7 +34,7 @@ class CarListRecyclerAdapter(private val callback: (View, List<CarListRsp.CarLis
         mList.addAll(list)
         var num = 0
         mList.forEach { _ ->
-            map[++num]=false
+            map[num++]=false
         }
         totalPrices=0.0
         list.forEach{
