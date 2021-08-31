@@ -1,5 +1,5 @@
 # dianquan
 电圈
-![QQ图片20210831200644](https://user-images.githubusercontent.com/68262407/131499970-24d3dc61-28e7-4da6-a5f7-56021458af98.jpg)
 
 
+<img src=https://user-images.githubusercontent.com/68262407/131501108-cdbe378c-d5b7-427e-b676-436941b35d8e.jpg width=247 height=506 />
