@@ -42,9 +42,11 @@ class HomeFragment : BaseFragment() {
 
             //设置轮播
             homeBanner.addBannerLifecycleObserver(viewLifecycleOwner)//添加生命周期观察者
-                .setAdapter(bannerAdapter).apply {
+                .setAdapter(bannerAdapter,false).apply {
                     indicator= CircleIndicator(context)//轮播图上的点
                 }
+                .isAutoLoop(true)
+
 
             viewModel.isLoading.observe(viewLifecycleOwner) {
                 //协程block获取数据代码块是否结束，协程结束时为false

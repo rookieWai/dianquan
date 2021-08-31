@@ -64,7 +64,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
             //设置轮播
             productDetailBanner.addBannerLifecycleObserver(viewLifeCycleOwner)//添加生命周期观察者
-                .setAdapter(bannerAdapter).apply {
+                .setAdapter(bannerAdapter,false).apply {
                     isAutoLoop(false)  //不自动轮播
                     indicator= CircleIndicator(context)//轮播图上的点
                 }

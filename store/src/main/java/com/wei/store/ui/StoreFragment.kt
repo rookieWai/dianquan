@@ -78,8 +78,8 @@ class StoreFragment : BaseFragment() {
                 }
             }
 
-            //设置刷新进度条的颜色
-            swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
+//            //设置刷新进度条的颜色
+//            swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
 
         }
     }
@@ -151,15 +151,16 @@ class StoreFragment : BaseFragment() {
             }
 
             //设置下拉刷新的监听器
-            mBinding.apply {
-                swipeRefresh.setOnRefreshListener {
-                    val tab: TabLayout.Tab? =tlStore.getTabAt(tlStore.selectedTabPosition)
-                    if (tab != null) {
-                        refreshData(map[tab.text])
-                        swipeRefresh.isRefreshing=false //表示刷新时间结束，并隐藏进度条
-                    }
-                }
-            }
+//            mBinding.apply {
+//                swipeRefresh.setOnRefreshListener {
+//                    val tab: TabLayout.Tab? =tlStore.getTabAt(tlStore.selectedTabPosition)
+//                    if (tab != null) {
+//                        refreshData(map[tab.text])
+//                        swipeRefresh.isRefreshing=false //表示刷新时间结束，并隐藏进度条
+//                    }
+//                    swipeRefresh.isRefreshing=false
+//                }
+//            }
 
         }
 
