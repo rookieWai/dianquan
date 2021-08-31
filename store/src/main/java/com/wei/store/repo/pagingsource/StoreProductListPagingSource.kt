@@ -36,7 +36,7 @@ class StoreProductListPagingSource(
 
         //获取页码，页码未定义置为1
         var pageNum  = params.key ?: 1
-        service.getStoreProductByCategoryId(productCategoryId)
+        service.getStoreProductByCategoryId(productCategoryId,pageNum)
             .serverData()
             .onSuccess {
                 onBizOK<StoreProductRsp> { code, data, message ->
@@ -48,7 +48,7 @@ class StoreProductListPagingSource(
                         //初始化的时候要为null，避免第一页重复加载，仅向后翻页，如果可以往上加载更多就设置该参数，否则不设置
                         prevKey = null,
                         //加载下一页的key 如果传null就说明到底了
-                        nextKey = if (pageNum< totalPage) pageNum.plus(1) else null
+                        nextKey = if (pageNum< totalPage) pageNum.plus(1) else null,
                     )
                 }
             }
