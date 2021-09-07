@@ -8,7 +8,7 @@
 
 
 
-本项目采用模块化的方式构建整个应用，现有模块：login(登录模块)、mine(个人模块)、home(首页模块)、store(商店模块)、deal(交易模块)、survey(测评模块)、service(服务模块)、common(公共模块) 
+本项目采用组件化的方式构建整个应用，现有模块：login(登录模块)、mine(个人模块)、home(首页模块)、store(商店模块)、deal(交易模块)、survey(测评模块)、service(服务模块)、common(公共模块) 
 
 使用阿里ARouter实现模块之间的通信
 
